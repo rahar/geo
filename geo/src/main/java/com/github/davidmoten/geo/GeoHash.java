@@ -422,7 +422,7 @@ public final class GeoHash {
     // Geohash library for Javascript
     // (c) 2008 David Troy
     // Distributed under the MIT License
-    public static LatLong decodeHash(String geohash) {
+    public static GeoHashInfo decodeHash(String geohash) {
         Preconditions.checkNotNull(geohash, "geohash cannot be null");
         boolean isEven = true;
         double[] lat = new double[2];
@@ -448,7 +448,7 @@ public final class GeoHash {
         double resultLat = (lat[0] + lat[1]) / 2;
         double resultLon = (lon[0] + lon[1]) / 2;
 
-        return new LatLong(resultLat, resultLon);
+        return new GeoHashInfo(geohash, resultLat, resultLon, lat[1], lon[0], lat[0], lon[1]);
     }
 
     /**
